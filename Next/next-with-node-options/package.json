@@ -1,0 +1,19 @@
+{
+  "name": "nextjs-with-node-options",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "cross-env NODE_OPTIONS='--max-http-header-size=116192' next start -p 8080",
+    "export": "next export"
+  },
+  "dependencies": {
+    "next": "9.4.4",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2"
+  }
+}
