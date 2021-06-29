@@ -1,0 +1,14 @@
+{
+  "name": "fastify-azure-app-service",
+  "version": "1.0.0",
+  "description": "Sample Fastify server for Azure App Service",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "aldmarj",
+  "license": "ISC",
+  "dependencies": {
+    "fastify": "^3.18.0"
+  }
+}
