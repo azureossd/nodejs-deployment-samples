@@ -1,0 +1,32 @@
+<div class="container">
+  <br/>
+  <h2>Fruits List</h2>
+
+  <table class="table table-bordered">
+    <thead>   
+      <tr>
+        <th scope="col">#Id</th>
+        <th scope="col">Title</th>  
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let fruit of fruits">
+        <td>{{ fruit.id }}</td>
+        <td>{{ fruit.title }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="container">
+  <form (ngSubmit)="addFruit()" [formGroup]="fruitsForm">
+    <div class="form-group col-md-4">
+      <label for="id">Id:</label>
+      <input formControlName="id" class="form-control" id="id" placeholder="Enter id"><br/>
+      <label for="title">Title:</label>
+      <input formControlName="title" class="form-control" id="title" placeholder="Enter title"><br/>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>
+
