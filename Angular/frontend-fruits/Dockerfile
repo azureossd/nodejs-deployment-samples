@@ -1,4 +1,4 @@
-# Stage 2
+# Stage 1
 FROM node:14.17.5-slim AS builder
 WORKDIR /app
 COPY package*.json ./
