@@ -5,11 +5,12 @@
 3. Express REST API (fruits-rest-api) running on port 3000.
 
 ## Installing Angular CLI and creating app
-1. Type **`npm i @angular/cli -g`**. (This can take several minutes).
-2. Create a new Angular app using the following command: **`ng new frontend-fruits`**. When prompted for Angular routing answer **N**. Then chose **CSS Stylesheet**. (This can take several minutes).
-3. Once the installation is done, cd into `frontend-fruits` folder and then start the server using **`ng serve`**. This will compile and build the site.
-4. Browse the site with `http://localhost:4200` to get the default page.
-5. You can define specific port using **`ng serve --host 0.0.0.0 --port 8080`**.
+1. Create a new folder for this application and open a new terminal and cd into this folder.
+2. Type **`npm i @angular/cli -g`**. (This can take several minutes).
+3. Create a new Angular app using the following command: **`ng new frontend-fruits`**. When prompted for Angular routing answer **N**. Then chose **CSS Stylesheet**. (This can take several minutes).
+4. Once the installation is done, cd into `frontend-fruits` folder and then start the server using **`ng serve`**. This will compile and build the site.
+5. Browse the site with `http://localhost:4200` to get the default page.
+6. You can define specific port using **`ng serve --host 0.0.0.0 --port 8080`**.
 
 ## Create and configure an Angular HttpClient
 1. Type **`code .`** in your terminal to open Visual Code.
@@ -107,7 +108,7 @@
     ```
     import { AppService } from './app.service';
     ```
-2. Add `OnInit` class importing from '@angular/core':
+2. Add `OnInit` class to the existing '@angular/core' line:
     ```
     import { Component, OnInit } from '@angular/core';
     ```
