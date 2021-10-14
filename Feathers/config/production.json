@@ -1,4 +1,4 @@
 {
-  "host": "azure-feathers-type-script-github-actions-app.feathersjs.com",
+  "host": "<ENTER-A-HOSTNAME>.feathersjs.com",
   "port": "PORT"
 }
