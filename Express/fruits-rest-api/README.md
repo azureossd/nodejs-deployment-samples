@@ -105,6 +105,10 @@
         ```
         curl -X POST http://localhost:3000/fruits -H "Content-type:application/json" -d "{\"id\":5",\"title\":\"Papaya\"}"
         ```
+    > If you are using Linux you can use this format:
+    >```
+    >    curl -X POST http://localhost:3000/fruits -H "Content-type:application/json" -d "{'id':'5','title':'Papaya'}"
+    >```
 9. Browse to `http://localhost:3000/fruits/` to check the new item added or use your client for GET requests. (Example: `curl http://localhost:3000/fruits`).
 10. You will get an error `TypeError: Cannot read property 'id' of undefined`, you need to add express.json() middleware function in Express. It parses incoming requests with JSON payloads and is based on body-parser. Add this line after const variables.
     ```
