@@ -70,7 +70,7 @@
     import { Fruit } from "./fruit";
     ```
 9. Use an Observable, this is used frequently in Angular and it is a technique for event handling, asynchronous programming, and handling multiple values, import the module using:
-    ```
+    ```javascript
     import { Observable } from 'rxjs';
     ```
 10. Add the following method inside AppService class to implement the Observable:
