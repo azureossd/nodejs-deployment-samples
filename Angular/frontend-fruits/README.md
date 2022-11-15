@@ -16,11 +16,11 @@
 ## Create and configure an Angular HttpClient
 1. Type **`code .`** in your terminal to open Visual Code.
 2. Add `HttpClient` class to access the REST backend API. Navigate through `src/app/app.module.ts` and open this file and import the class as followed:
-    ```
+    ```javascript
     import { HttpClientModule } from '@angular/common/http';
     ```
 3. Add the module `HttpClientModule` in  `@NgModule` imports section.
-    ```
+    ```javascript
         @NgModule({
         declarations: [
             AppComponent
@@ -40,7 +40,7 @@
 3. Remove `src/app/fruit.spec.ts`, we don't need this file for now.
 
 4. Open file `src/app/fruit.ts` and add the following code:
-    ```
+    ```javascript
         export class Fruit {
             
             public id: number;
@@ -54,19 +54,19 @@
 
     ```
 5. Edit file `src/app/app.service.ts` and import HttpClient class from '@angular/common/http';
-    ```
+    ```javascript
     import { HttpClient } from '@angular/common/http';
     ```
 6. Replace the existing constructor passing the HttpClient object:
-    ```
+    ```javascript
     constructor(private http: HttpClient) { }
     ```
 7. Declare a variable before the constructor pointing to the REST API endpoint:
-    ```
+    ```javascript
     private API_ENDPOINT='http://localhost:3000';
     ```
 8. Import the fruits model in the top with:
-    ```
+    ```javascript
     import { Fruit } from "./fruit";
     ```
 9. Use an Observable, this is used frequently in Angular and it is a technique for event handling, asynchronous programming, and handling multiple values, import the module using:
@@ -74,13 +74,13 @@
     import { Observable } from 'rxjs';
     ```
 10. Add the following method inside AppService class to implement the Observable:
-    ```
+    ```javascript
      getFruits(): Observable<Fruit> {
          return this.http.get<Fruit>(this.API_ENDPOINT + '/fruits')
         }
     ```
 11. The final structure should be like this:
-    ```
+    ```javascript
     import { Injectable } from '@angular/core';
     import { HttpClient } from '@angular/common/http';
     import { Fruit } from "./fruit";
@@ -106,15 +106,15 @@
 ## Implementing the service into a Component
 
 1. Modify `src/app/app.component.ts` and import the service with:
-    ```
+    ```javascript
     import { AppService } from './app.service';
     ```
 2. Add `OnInit` class to the existing '@angular/core' line:
-    ```
+    ```javascript
     import { Component, OnInit } from '@angular/core';
     ```
 3. Replace the AppComponent class with the following code:
-    ```
+    ```javascript
     export class AppComponent implements OnInit {
 
         title = 'frontend-fruits';
@@ -136,7 +136,7 @@
    This code is calling the service on the ngOnInit() method and passing the result into an array object.
 
 4. Modify `src/app/app.component.html` and replace the existing html with the following:
-    ```
+    ```html
     <div class="container">
         <br/>
         <h2>Fruits List</h2>
@@ -164,12 +164,12 @@
 ## Adding new methods to Angular Service
 1. To implement a http post, open `src/app/app.service.ts` and import this class:
 
-    ```
+    ```javascript
     import { HttpHeaders } from '@angular/common/http';
     ```
 2. Create a httpOptions object after the imported modules and before Injectable section:
 
-    ```
+    ```javascript
     const httpOptions = {
         headers: new HttpHeaders({
             'Content-Type':  'application/json'
@@ -177,14 +177,14 @@
     };
     ```
 3. Then add the following post method:
-    ```
+    ```javascript
     addFruit(fruit: Fruit): Observable<Fruit> {
         return this.http.post<Fruit>(this.API_ENDPOINT + '/fruits', fruit, httpOptions)
     }
     ```
 4. Final structure of this file will be like this:
 
-    ```
+    ```javascript
     import { Injectable } from '@angular/core';
     import { HttpClient } from '@angular/common/http';
     import { Fruit } from "./fruit";
@@ -219,11 +219,11 @@
     ```
 ## Implementing Angular Forms
 1. Modify `src/app/app.module.ts` and import the following modules in the top:
-    ``` 
+    ``` javascript
     import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ```
 2. Then add these modules inside @NgModule imports section as followed:
-    ```
+    ```javascript
     @NgModule({
     declarations: [
         AppComponent
@@ -239,11 +239,11 @@
     })
     ```
 3. Open the file `src/app/app.component.ts` and import `FormGroup` and `FormControl` clases from Angular forms.
-    ```
+    ```javascript
     import { FormGroup, FormControl } from '@angular/forms';
     ```
 4. Create a FormGroup to track the value and validity state of a group of FormControl.
-    ```
+    ```javascript
     title = 'frontend-fruits';
     fruits: any = [];
 
@@ -253,7 +253,7 @@
     });
     ```
 5. Add the following method to pass the form values to the service on the submit button event.
-    ```
+    ```javascript
     addFruit(){
         this.appService.addFruit(this.fruitsForm.value)
         .subscribe(fruit => {
@@ -264,7 +264,7 @@
     }
     ```
 6. Final structure of this document will be like this:
-    ```
+    ```javascript
     import { Component, OnInit } from '@angular/core';
     import { AppService } from './app.service';
     import { FormGroup, FormControl } from '@angular/forms';
@@ -308,7 +308,7 @@
 
     ```
 7. Open `src/app/app.component.html` and add the following section at the end of the existing content:
-    ```
+    ```html
         <div class="container">
         <form (ngSubmit)="addFruit()" [formGroup]="fruitsForm">
             <div class="form-group col-md-4">
@@ -328,7 +328,7 @@
 
 There are several ways to implement CSS specially for Bootstrap, in this lab will be taking the easy one.
 1. Open `src/styles.css` and add this line:
-    ```
+    ```javascript
     @import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
     ```
 2. Save all and browse to `http://localhost:4200` to review the changes.
