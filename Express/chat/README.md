@@ -12,7 +12,7 @@
 1. Type **`npm init`** to create a `package.json` file for your project.
 2. You can press enter to go through the different items, you can change the entrypoint from `index.js` to `server.js`.
 3. Then run the following commands 
-    ```
+    ```bash
     npm install express socket.io --save
     ```
 
@@ -20,7 +20,7 @@
 1. Open a new terminal and cd into your project and type **`code .`** to open the current directory in Visual Code.
 2. In Visual Code, right click on left panel and select `New File`, change the name of the file to `server.js`.
 3. You need to create a http server and pass Express app, add the following code inside `server.js` file: 
-    ```
+    ```javascript
     const express = require('express');
     const app = express();
     const port = process.env.PORT || 3000;
@@ -28,7 +28,7 @@
 
     ```
 4. Then create the socket.io server, passing some options as cors and Http Methods allowed:
-    ```
+    ```javascript
     var io = require('socket.io')(server, {
         cors: {
             origin: "*",
@@ -37,14 +37,14 @@
     });
     ```
 5. Implement connection event, this event is fired upon a new connection. 
-```
+```javascript
     io.on('connection', (socket) => {
         // ...
     });
 ```
 
 6. Inside the connection event, you can add information to know if a client has connected and disconnected, like getting the socket.id and time.
-    ```
+    ```javascript
     io.on('connection', (socket) => {
 
         var time = new Date().toISOString();
@@ -60,7 +60,7 @@
     ```
 7. Then you can implement two events, one when a client joins a room, and another event when the user sends a message to the room. These two events should be inside connection event.
 
-    ```
+    ```javascript
         socket.on('join_room', (data) =>{
             socket.join(data);
             console.log(`User joined room: ${data}`);
@@ -72,13 +72,13 @@
         });
     ```
 8. Finally add the server object needs to listen into a port.
-    ```
+    ```javascript
     server.listen(port, () => {
         console.log(`Socket.IO server listening at http://localhost:${port}`)
     });
     ```
 9. Final structure of `server.js`:
-    ```
+    ```javascript
     const express = require('express');
     const app = express();
     const port = process.env.PORT || 3000;
