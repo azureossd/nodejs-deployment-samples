@@ -14,7 +14,7 @@
 3. Open file `src/App.js` and remove all the content from that file.
 4. You will be working on the following structure, copy this structure inside `src/App.js`: 
 
-    ```
+    ```javascript
     //Import classes section
 
     //Global const variables
@@ -37,24 +37,24 @@
     export default App;
     ```
 5. Start importing react with [hooks](https://reactjs.org/docs/hooks-intro.html) and socket client with the following:
-    ```
+    ```javascript
     import React, { useState, useEffect, useRef } from "react";
     import io from "socket.io-client";
     ```
 6. Then create the following global const variables for server: 
-    ```
+    ```javascript
     const SERVER_ENDPOINT = "http://localhost:3000";
     let socket;
     ```
 7. Inside function App method add the following code, to create the connection to the socket.io server:
-    ```
+    ```javascript
     useEffect(() => {
         socket = io(SERVER_ENDPOINT);
     }, []);
     ```
     The [Effect Hook](https://reactjs.org/docs/hooks-effect.html) lets you perform side effects in function components.
 8. You can implement [useState](https://reactjs.org/docs/hooks-state.html), which is a Hook that lets you add React state to function components. In the const variables section inside App main function add the following const:
-    ```
+    ```javascript
     const [loggedIn, setLoggedIn] = useState(false);
     const [room, setRoom] = useState('');
     const [userName, setUserName] = useState('')
@@ -64,14 +64,14 @@
     These variables will help to manage if the user is logged or not, update room, username, invidual message and a list of messages.
 
 9. Implement the first method to connect to a room and change the state of loggedIn to true.
-    ```
+    ```javascript
         const connectToRoom = () =>{
             setLoggedIn(true);
             socket.emit("join_room", room);
         };
     ```
 10. Second method will be for sending the message, passing an object with the room and a content with username and message, then it will emit the message to that specific room and updating the array of messages.
-    ```
+    ```javascript
     const sendMessage = async() =>{
 
         let messageContent = {
@@ -88,7 +88,7 @@
     };
     ```
 11. Then you will need to implement another effect to receive messages from the server, which will contain the list of messages from specific room.
-    ```
+    ```javascript
     useEffect(() =>{
         socket.on("receive_message", (data) =>{
         setMessageList([...messageList,data])
@@ -99,17 +99,17 @@
 ## Implementing React Forms with Bootstrap
 1. In your terminal type **`npm install react-bootstrap@next bootstrap@5.1.0 --save`** to include React Bootstrap in your project.
 2. In the same file `src/App.js` import Bootstrap files and classes:
-```
+```javascript
     import 'bootstrap/dist/css/bootstrap.min.css';
     import {Button, Card, Form, Container} from 'react-bootstrap'
 ```
 3. In the const variables inside function App, create a [reference](https://reactjs.org/docs/hooks-reference.html#useref) object:
-```
+```javascript
     const formRef = useRef(null);
 ```
 4. In the return method for HTML, replace the existing content with:
 
-    ```
+    ```javascript
     return (
         <div>
         <Form  ref={formRef}>
@@ -160,7 +160,7 @@
     ```
     In this form, it will be validating if the user is logged or not with this condition  `!loggedIn ?(notlogged):(logged)`. In the first container, it is printing a form for setting a `UserName` and `Room` and then click to call `connectToRoom` and join that room. After logged, it will show the next container where the user can submit a message to that room. If another user connects to the same room, then they can start chatting and sharing the same list of messages.
 5. Add a method to reset the form after submiting the message inside `sendMessage` method.
-    ```
+    ```javascript
     const sendMessage = async() =>{
         //....
         //setMessage("");
@@ -171,7 +171,7 @@
 
 ## Final Structure
 -  Review the final code structure:
-    ```
+    ```javascript
     import React, { useState, useEffect, useRef } from "react";
     import 'bootstrap/dist/css/bootstrap.min.css';
     import {Button, Card, Form, Container} from 'react-bootstrap'
