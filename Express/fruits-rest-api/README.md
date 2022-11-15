@@ -13,7 +13,7 @@
 1. Open a new terminal and cd into your project and type **`code .`** to open the current directory in Visual Code.
 2. In Visual Code, right click on left panel and select `New File`, change the name of the file to `server.js`.
 3. Copy the following code in `server.js`
-    ```
+    ```javascript
         const express = require('express');
         const app = express();
         const cors = require('cors');
@@ -36,7 +36,7 @@
 
 ## Creating REST API
 1. Add the following json array after const variables.
-    ```
+    ```javascript
         let fruits = [
                 {"id": 1,"title": "Apple"},
                 {"id": 2,"title": "Banana"},
@@ -45,20 +45,20 @@
             ];
     ```
 2. Add GET route:
-    ```
+    ```javascript
         app.get("/fruits", (req, res) => {
             res.json(fruits);
         });
     ```
 3. Browse to `http://localhost:3000/fruits`
 4. Add the following method after the json array:
-    ```
+    ```javascript
         const findFruitById = (id) => {
             return Object.values(fruits).find(fruit => fruit.id === id);
         }
     ```
 5. Add the next GET route with parameter to find an item by id:
-    ```
+    ```javascript
         app.get("/fruits/:id", (req, res) => {
             var id = parseInt(req.params.id);
             if(!isNaN(id)){
@@ -74,7 +74,7 @@
     ```
 6. Browse to `http://localhost:3000/fruits/1`, test using several ids and also with words.
 7. Add POST route to add new items to array.
-    ```
+    ```javascript
         app.post("/fruits", (req, res) => {
 
             if(req.body.id){
@@ -111,12 +111,12 @@
     >```
 9. Browse to `http://localhost:3000/fruits/` to check the new item added or use your client for GET requests. (Example: `curl http://localhost:3000/fruits`).
 10. You will get an error `TypeError: Cannot read property 'id' of undefined`, you need to add express.json() middleware function in Express. It parses incoming requests with JSON payloads and is based on body-parser. Add this line after const variables.
-    ```
+    ```javascript
         app.use(express.json());
     ```
 11. Retry the POST request from client.
 12. Add the next function to modify a current item in array.
-    ```
+    ```javascript
         const modifyFruitById = (id, updatedFruit) => {
             fruits.find(function(fruit, i){
                 if(fruit.id === id){
@@ -126,7 +126,7 @@
         };
     ```
 13. Add PUT route that will accept body data.
-    ```
+    ```javascript
     app.put("/fruits", (req, res) => {
 
         if(req.body.id){
@@ -159,7 +159,7 @@
         ```
 15. Browse to `http://localhost:3000/fruits/` to check the modified item or use your client for GET requests. (Example: `curl http://localhost:3000/fruits`).
 16. Add the next helper to remove an existing item in the array.
-    ```
+    ```javascript
         const removeFruitById = (id) => {
             let index = -1;
             fruits.find(function(fruit, i){
@@ -171,7 +171,7 @@
         }
     ```
 17. Add DELETE route accepting a parameter id.
-    ```
+    ```javascript
         app.delete("/fruits/:id", (req, res) => {
             
             var id = parseInt(req.params.id);
