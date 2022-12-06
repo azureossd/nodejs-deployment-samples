@@ -6,7 +6,7 @@
 
 ## Installing Angular CLI and creating app
 1. Create a new folder for this application and open a new terminal and cd into this folder.
-2. Type **`npm i @angular/cli -g`**. (This can take several minutes).
+2. Type **`npm i @angular/cli@14.2.10`**. (This can take several minutes).
    > In case you are using PowerShell, you need to set a policy `Set-ExecutionPolicy -ExecutionPolicy Unrestricted`
 4. Create a new Angular app using the following command: **`ng new frontend-fruits`**. When prompted for Angular routing answer **N**. Then chose **CSS Stylesheet**. (This can take several minutes).
 5. Once the installation is done, cd into `frontend-fruits` folder and then start the server using **`ng serve`**. This will compile and build the site.
