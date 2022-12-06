@@ -248,20 +248,20 @@
     fruits: any = [];
 
     fruitsForm = new FormGroup({
-        id: new FormControl(''),
-        title: new FormControl('')
+      id: new FormControl(0, { nonNullable: true }),
+      title: new FormControl('', {nonNullable: true})
     });
     ```
 5. Add the following method to pass the form values to the service on the submit button event.
     ```javascript
     addFruit(){
-        this.appService.addFruit(this.fruitsForm.value)
+        this.appService.addFruit(this.fruitsForm.value as Fruit)
         .subscribe(fruit => {
-        this.fruits.push(fruit);
-        this.getFruits();
-        this.fruitsForm.reset();
-        });
-    }
+            this.fruits.push(fruit);
+             this.getFruits();
+             this.fruitsForm.reset();
+           });
+     }
     ```
     
 
@@ -282,9 +282,10 @@
 
         title = 'frontend-fruits';
         fruits: any = [];
+        
         fruitsForm = new FormGroup({
-            id: new FormControl(''),
-            title: new FormControl('')
+          id: new FormControl(0, { nonNullable: true }),
+          title: new FormControl('', {nonNullable: true})
         });
 
         constructor(private appService: AppService) { }
@@ -300,12 +301,12 @@
         }
 
         addFruit(){
-            this.appService.addFruit(this.fruitsForm.value)
-            .subscribe(fruit => {
+          this.appService.addFruit(this.fruitsForm.value as Fruit)
+          .subscribe(fruit => {
             this.fruits.push(fruit);
-            this.getFruits();
-            this.fruitsForm.reset();
-            });
+             this.getFruits();
+             this.fruitsForm.reset();
+           });
         }
     }
 
@@ -327,31 +328,6 @@
     This form pattern is using ReactiveForms https://angular.io/guide/reactive-forms
 8. Save all and browse to `http://localhost:4200` to review the changes.
 
-*Note for Angular 14 version*:
-    
-If you are getting issues when passing `this.fruitsForm.value` and you are using Angular 14, previous method will fail because reactive forms in Angular 14 are strictly typed by default.
-    
-To fix this scenario, you need to modify the current FormGroup and add a nonNullable parameter:
-    
-```javascript
- fruitsForm = new FormGroup({
-    id: new FormControl(0, { nonNullable: true }),
-    title: new FormControl('', {nonNullable: true})
- });
-```
-    
-And then cast the forms value into Fruit, and for this you need first to import Fruit with: `import { Fruit } from './fruit';`
-    
-```javascript
-    addFruit(){
-        this.appService.addFruit(this.fruitsForm.value as Fruit)
-        .subscribe(fruit => {
-            this.fruits.push(fruit);
-             this.getFruits();
-             this.fruitsForm.reset();
-           });
-    }
-```
 
 ## Implementing CSS 
 
