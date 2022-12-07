@@ -265,11 +265,11 @@
      }
     ```
 
-  Import the fruit class in the top with:
+   Import the fruit class in the top with:
   
-  ```javascript
-  import { Fruit } from './fruit';
-  ``` 
+    ```javascript
+     import { Fruit } from './fruit';
+    ``` 
 
     
 6. Final structure of this document will be like this:
