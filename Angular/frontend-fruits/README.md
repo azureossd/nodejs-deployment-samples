@@ -253,6 +253,7 @@
     });
     ```
 5. Add the following method to pass the form values to the service on the submit button event.
+
     ```javascript
     addFruit(){
         this.appService.addFruit(this.fruitsForm.value as Fruit)
@@ -263,7 +264,12 @@
            });
      }
     ```
-    
+
+  Import the fruit class in the top with:
+  
+  ```javascript
+  import { Fruit } from './fruit';
+  ``` 
 
     
 6. Final structure of this document will be like this:
@@ -271,6 +277,7 @@
     import { Component, OnInit } from '@angular/core';
     import { AppService } from './app.service';
     import { FormGroup, FormControl } from '@angular/forms';
+    import { Fruit } from './fruit';
 
     @Component({
     selector: 'app-root',
