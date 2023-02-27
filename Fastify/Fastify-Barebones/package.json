@@ -9,6 +9,6 @@
   "author": "aldmarj",
   "license": "ISC",
   "dependencies": {
-    "fastify": "^3.18.0"
+    "fastify": "^3.29.4"
   }
 }
