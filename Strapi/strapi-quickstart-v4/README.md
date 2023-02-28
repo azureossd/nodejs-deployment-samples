@@ -32,38 +32,55 @@ npm run build
 yarn build
 ```
 
-## ⚙️ Deployment
+## ⚙️ Deployment to Linux App Service
 
 This Repo is slightly modified for deployment to a Azure Linux App Service as a Proof of Concep Project.
 Below are some of the changes.
 
-* Make sure deployment is using the app service build system (oryx). With this framework you may face slow deployment times using any other method of deployment. You can make sure the oryx build is running by adding the following app settings: SCM_DO_BUILD_DURING_DEPLOYMENT=true
-    - https://github.com/microsoft/Oryx/blob/main/doc/runtimes/nodejs.md
-    - https://github.com/microsoft/Oryx/blob/main/doc/hosts/appservice.md
+* Make sure deployment is using the app service build system (oryx). With this framework you may face slow deployment times using any other method of deployment. You can make sure the oryx build is running by adding the following app settings: 
+
+    ~~~json
+    SCM_DO_BUILD_DURING_DEPLOYMENT=true
+    ~~~
+
+    - [Oryx/node.js](https://github.com/microsoft/Oryx/blob/main/doc/runtimes/nodejs.md)
+    - [Oryx/Hosts - App Service](https://github.com/microsoft/Oryx/blob/main/doc/hosts/appservice.md)
+
 
 * Add the following app setting to resolve package installation errors when trying to write to a path under the Kudu site.
 
-*remote: sharp: Installation error: EACCES: permission denied, mkdir '/opt/Kudu/local/npm-cache'*
+    Deployment Error Message:
+    ~~~
+    remote: sharp: Installation error: EACCES: permission denied, mkdir '/opt/Kudu/local/npm-cache'
+    ~~~
+    
+    App Setting:
+    ~~~json
+    NPM_CONFIG_CACHE=/tmp
+    ~~~
 
-*NPM_CONFIG_CACHE=true*
+* Added *.yarnrc* file as deployment for some of the common packages may timeout when yarn tries to access them.
+  
+  More information here: [Fix Yarn ESOCKETTIMEDOUT with .yarnrc Configuration File](https://azureossd.github.io/2022/09/10/fix-yarn-ESOCKETTIMEDOUT-with-.yarnrc-configuration-file/index.html)
 
-* Added .yarnrc file as deployment for some of the common packages may timeout.
-  More information here: https://azureossd.github.io/2022/09/10/fix-yarn-ESOCKETTIMEDOUT-with-.yarnrc-configuration-file/index.html
+* Add the following environment variables necessary for strapi, you can find the sample values in your generated project's *.env* file.
 
-* Add the following environment variables necessary for strapi, you can find the values in your generated project's .env file.
+    App Settings: 
+    ~~~json
+    ADMIN_JWT_SECRET= {}
+    API_TOKEN_SALT= {}
+    APP_KEYS= {}
+    ~~~
 
-*ADMIN_JWT_SECRET={}*
-*API_TOKEN_SALT={}*
-*APP_KEYS={}*
 
-
-* For the purpose of the project we have pointed to a database file stored under temporary storage /tmp/data.db. This is because SQLite 3 is not supported to be stored under the /home storage on app service due to locking issues. 
+* For the purpose of the project we have pointed to a database file stored under temporary storage */tmp/data.db*. This is because SQLite 3 is not supported to be stored under the /home storage on app service due to locking issues. 
 
     **You will lose your databasefile file whenever the app service restarts for this project. This project is entended for a proof of concept.**
 
-* The Please configure your Strapi application to rely on a external database such as Azure MySQL or Azure PostGres when developing your application.
-    - https://azure.microsoft.com/en-us/products/mysql
-    - https://azure.microsoft.com/en-us/products/postgresql/
+* The Please configure your Strapi application to rely on a external database such as Azure MySQL or Azure PostGres when deploying your application to Azure. 
+
+    - [Quickstart: Use the Azure portal to create an Azure Database for MySQL Flexible Server](https://learn.microsoft.com/en-us/azure/mysql/flexible-server/quickstart-create-server-portal)
+    - [Quickstart: Use the Azure portal to create an Azure Database for MySQL Flexible Server](https://learn.microsoft.com/en-us/azure/postgresql/single-server/quickstart-create-server-database-portal)
 
 ## 📚 Learn more
 
