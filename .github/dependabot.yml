@@ -1,0 +1,101 @@
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+
+version: 2
+updates:
+  - package-ecosystem: "npm" 
+    directory: "/Angular/angularfrontend" 
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "npm" 
+    directory: "/Angular/frontend-fruits" 
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "npm" 
+    directory: "/Express/chat" 
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "npm" 
+    directory: "/Express/fruits-rest-api" 
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "npm" 
+    directory: "/Fastify/Fastify-Barebones" 
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "npm" 
+    directory: "/Fastify/Fastify-CLI" 
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "npm" 
+    directory: "/Feathers" 
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "npm" 
+    directory: "/Gatsby" 
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "npm" 
+    directory: "/Gatsby" 
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "npm" 
+    directory: "/Nest" 
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "npm" 
+    directory: "/Next/helloworld" 
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "npm" 
+    directory: "/Next/next-typescript-non-working" 
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "npm" 
+    directory: "/Next/next-with-node-options" 
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "npm" 
+    directory: "/Next/TypeScript-Express" 
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "npm" 
+    directory: "/React/frontend-chat" 
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "npm" 
+    directory: "/React/my-app" 
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "npm" 
+    directory: "/Sails/sails-helloworld" 
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "npm" 
+    directory: "/Vue/helloworld" 
+    schedule:
+      interval: "weekly"
+
+
+
+
+  
