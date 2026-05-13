@@ -12,7 +12,7 @@
   "devDependencies": {},
   "dependencies": {
     "@strapi/strapi": "4.7.0",
-    "@strapi/plugin-users-permissions": "4.7.0",
+    "@strapi/plugin-users-permissions": "5.45.0",
     "@strapi/plugin-i18n": "4.7.0",
     "better-sqlite3": "8.0.1"
   },
