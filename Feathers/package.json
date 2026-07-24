@@ -59,7 +59,7 @@
     "@typescript-eslint/parser": "^5.0.0",
     "axios": "^1.18.0",
     "eslint": "^7.32.0",
-    "mocha": "^8.4.0",
+    "mocha": "^11.7.6",
     "shx": "^0.3.3",
     "ts-mocha": "^8.0.0",
     "ts-node-dev": "^1.1.8",
