@@ -9,7 +9,7 @@
     "export": "next export"
   },
   "dependencies": {
-    "next": "15.5.24",
+    "next": "15.5.29",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   }
